@@ -25,8 +25,14 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 'remember_token', 'pivot'
     ];
+
+    // $user->specialties
+    public function specialties()
+    {
+        return $this->belongsToMany(Specialty::class)->withTimestamps();
+    }
 
     public function scopePatients($query)
     {
@@ -36,5 +42,27 @@ class User extends Authenticatable
     public function scopeDoctors($query)
     {
         return $query->where('role', 'doctor');
+    }
+
+    // $user->asPatientAppointments  ->requestedAppointments
+    // $user->asDoctorAppointments   ->attendedAppointments
+    public function asDoctorAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'doctor_id');
+    }
+
+    public function attendedAppointments()
+    {
+        return $this->asDoctorAppointments()->where('status', 'Atendida');
+    }
+
+    public function cancelledAppointments()
+    {
+        return $this->asDoctorAppointments()->where('status', 'Cancelada');
+    }
+    
+    public function asPatientAppointments()
+    {
+        return $this->hasMany(Appointment::class, 'patient_id');
     }
 }
