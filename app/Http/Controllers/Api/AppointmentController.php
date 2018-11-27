@@ -6,22 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Auth;
 
+use App\Http\Requests\StoreAppointment;
+
 class AppointmentController extends Controller
 {
-
-/*
-"id",
-"description",
-"specialty_id",
-"doctor_id",
-"patient_id",
-"scheduled_date",
-"scheduled_time",
-"type",
-"created_at",
-"updated_at",
-"status",
-*/	
     public function index()
     {
     	$user = Auth::guard('api')->user();
@@ -49,8 +37,10 @@ class AppointmentController extends Controller
     	return $appointments;
     }
 
-    public function store()
+    public function store(StoreAppointment $request)
     {
+    	$success = Appointment::createForPatient($request, auth()->id());
 
+    	return compact('success');
     }
 }

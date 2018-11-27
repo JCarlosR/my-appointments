@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use Carbon\Carbon;
+use Illuminate\Http\Request;
 
 class Appointment extends Model
 {
@@ -58,4 +59,23 @@ class Appointment extends Model
         return (new Carbon($this->scheduled_time))
             ->format('g:i A');
     }
+
+    static public function createForPatient(Request $request, $patientId) {
+        $data = $request->only([
+            'description', 
+            'specialty_id',
+            'doctor_id',
+            'scheduled_date',
+            'scheduled_time',
+            'type'
+        ]);
+
+        $data['patient_id'] = $patientId;
+
+        // right time format
+        $carbonTime = Carbon::createFromFormat('g:i A', $data['scheduled_time']);
+        $data['scheduled_time'] = $carbonTime->format('H:i:s');
+
+        return self::create($data);
+    } 
 }
