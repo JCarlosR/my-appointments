@@ -7,12 +7,11 @@ Sin dependencias
 Retrofit
 - URL base
 - Rutas
-- Parámetros
-- Callback
+- Parámetros (@Query, @Header)
+- Callback (object expression)
 - GsonConverter -> JSON a Objetos
 
 - Interceptor
 - RxAndroid
 
 {"name":"Juan","edad":23}
-
