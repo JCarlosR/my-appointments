@@ -21,5 +21,7 @@ class UserController extends Controller
     	$user->phone = $request->phone;
     	$user->address = $request->address;
     	$user->save();
+
+    	JwtAuth::clearCache($user);
     }
 }
