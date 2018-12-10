@@ -1,0 +1,18 @@
+Desarrollo web
+Laravel -> Backend (MySQL) -> API
+-> Chart <- Desde el servidor
+Javascript -> Frontend
+-> Chart <- Ajax <- Reporte con filtros
+CronJobs <- 1min (5min, 10min, día, week)
+
+Desarrollo móvil
+-> JWT
+-> Get Post @Headers
+-> JSON -> GsonConverter -> Retrofit (Http Request)
+-> FCM
+* Java, Kotlin
+
+---
+
+Módulos y lecciones EXTRA
+

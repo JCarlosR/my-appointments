@@ -2,7 +2,7 @@
 
 Tras registrar una cita:
 * Se crea con el estado "Reservada"
-* Se envía 1 notificación al médico -> Confirmar/Cancelar (Móvil)
+* Se envía 1 notificación al Confirmar/Cancelar (Móvil)
 * Administrador puede: Confirmar/Cancelar la cita (Web)
 * Paciente puede Cancelar -> No se notifica porque nunca fue "Confirmada"
 

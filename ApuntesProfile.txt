@@ -1,0 +1,5 @@
+Añadir btn en MenuActivity
+Crear nuevo ProfileActivity y diseñar layout xml
+Cargar datos desde BD
+Endpoint traer y guardar cambios
+Añadir IF al hacer clic sobre registrar nuevo appointment
